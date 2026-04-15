@@ -96,3 +96,11 @@ def block_to_html(block):
                 children_list.append(node)
             parent_node = ParentNode("ol", children_list)
             return parent_node
+
+
+def extract_title(md):
+    lines = md.splitlines()
+    for line in lines:
+        if line.lstrip().startswith("# "):
+            return line.lstrip()[2:]
+    raise Exception("No header found.")
